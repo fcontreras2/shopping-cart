@@ -1,11 +1,16 @@
 import React from 'react';
+import injectSheet from 'react-jss';
 
-const ContentLayout = props => {
-  return(
-    <div className="col-9">
-      {props.children}
-    </div>
-  )
+const styles = {
+  margin :{
+    marginTop: '2%'
+  }
 }
 
-export default ContentLayout;
+const ContentLayout = ({classes, children}) => (
+  <div className={`offset-3 col-9 ${classes.margin}`} >
+    {children}
+  </div>
+)
+
+export default injectSheet(styles)(ContentLayout);

@@ -5,17 +5,22 @@ import Content from './Content';
 
 class HomeContainer extends Component {
 
+  state = {
+    categories: []
+  }
+
   componentWillMount = () => {
     fetch('https://shopping-cart-data.herokuapp.com/categories/')
       .then(response => response.json())
-      .then(json => console.log(json))
+      .then(response => { this.setState({categories: response})})
   }
 
   render() {
+    console.log(this.props.categories);
     return(
       <HomeLayout>
-        <NavBar/>
-        <Content/>
+        <NavBar categories={this.state.categories}/>
+        <Content categories={this.state.categories}/>
       </HomeLayout>
     )
   }

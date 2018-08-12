@@ -1,0 +1,22 @@
+@font-face {
+  font-family: Lato;
+  src: url(/fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lato-Italic;
+  src: url(/fonts/Lato-Italic.ttf);
+}
+
+@font-face {
+  font-family: Lato-Bold;
+  src: url(/fonts/Lato-Bold.ttf);
+}
+
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Lato', sans-serif;
+  color: #424242;
+}

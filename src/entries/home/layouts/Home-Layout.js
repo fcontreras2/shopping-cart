@@ -1,11 +1,17 @@
 import React from 'react';
+import injectSheet from 'react-jss';
 
-const HomeLayout = props => {
-  return(
-    <div className="row">
-      {props.children}
-    </div>
-  )
+const styles = {
+  container: {
+    margin: 0,
+    padding: 0
+  }
 }
 
-export default HomeLayout;
+const HomeLayout = ({classes,children}) => (
+  <div className={`row ${classes.container}`}>
+    {children}
+  </div>
+)
+
+export default injectSheet(styles)(HomeLayout);

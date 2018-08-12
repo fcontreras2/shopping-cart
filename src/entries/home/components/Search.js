@@ -1,11 +1,26 @@
 import React from 'react';
+import {fontRegular, bluePrimary, fontItalic, grayPrimary} from '../../../styles/constants';
 
-const Search = props => {
-  return (
-    <div>
-      <input/>
-    </div>
-  )
+import injectSheet from 'react-jss';
+
+const styles = {
+  input: {
+    maxWith: '100%',
+    width: '250px',
+    padding: '8px',
+    color:grayPrimary,
+    fontFamily: fontRegular,
+    '&:focus': {
+      outline: 'none',
+      border: `2px solid ${bluePrimary}` 
+    },
+    '&::-webkit-input-placeholder': {
+      fontFamily: fontItalic
+    }
+  }
 }
 
-export default Search;
+const Search = props => (
+  <input type="text" placeholder="Busca un producto..." className={props.classes.input}/>
+)
+export default injectSheet(styles)(Search);
