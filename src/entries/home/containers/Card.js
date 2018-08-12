@@ -3,7 +3,7 @@ import CardLayout from '../layouts/Card-Layout';
 import CardImage from '../components/Card-Image';
 import CardDescription from '../components/Card-Description';
 import CardButton from '../components/Card-Button';
-
+import { connect } from 'react-redux';
 class Card extends Component {
   render() {
     return(
@@ -16,4 +16,10 @@ class Card extends Component {
   }
 }
 
-export default Card;
+const mapStateToProps = (state, props) => {
+  return {
+    product:state.category.products[props.product]
+  }
+}
+
+export default connect(mapStateToProps)(Card);

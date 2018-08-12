@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
+import { normalize } from 'normalizr';
+import { connect } from 'react-redux';
+import { schemaCategory } from '../../../store/category/schema';
+
 import NavBar from '../containers/NavBar';
 import HomeLayout from '../layouts/Home-Layout';
 import Content from './Content';
+
 
 class HomeContainer extends Component {
 
@@ -12,18 +17,35 @@ class HomeContainer extends Component {
   componentWillMount = () => {
     fetch('https://shopping-cart-data.herokuapp.com/categories/')
       .then(response => response.json())
-      .then(response => { this.setState({categories: response})})
+      .then(response => {
+        const normalizedData = normalize({categories:response}, schemaCategory);
+        console.log(normalizedData)
+        this.props.dispatch({
+          type: 'ADD_DATA',
+          payload: {
+            categories: normalizedData.result.categories.map(
+              item => normalizedData.entities.categories[item]),
+            products: normalizedData.entities.products
+          }
+        })
+        this.setState({categories: response})
+      })
   }
 
   render() {
-    console.log(this.props.categories);
     return(
       <HomeLayout>
-        <NavBar categories={this.state.categories}/>
-        <Content categories={this.state.categories}/>
+        <NavBar categories={this.props.categories}/>
+        <Content categories={this.props.categories}/>
       </HomeLayout>
     )
   }
 }
 
-export default HomeContainer;
+const mapStateToProps = (state, props) => {
+  return {
+    categories:state.category.categories
+  }
+}
+
+export default connect(mapStateToProps)(HomeContainer);

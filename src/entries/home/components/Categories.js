@@ -26,10 +26,10 @@ const Categories = ({categories,classes}) => (
   categories.map((category) => (
     <div key={category.id} className={classes.category}>
       <h1>{category.name}</h1>
-      <h4>{category.productos.length} productos</h4>
+      <h4>{category.products.length} productos</h4>
       <CategoryLayout>
         {
-          category.productos.map((product,key) => (
+          category.products.map((product,key) => (
             <Card key={key} product={product}/>
           ))
         }
