@@ -21,6 +21,11 @@ const styles = {
 }
 
 const Search = props => (
-  <input type="text" placeholder="Busca un producto..." className={props.classes.input}/>
+  <input 
+    type="text" 
+    placeholder="Busca un producto..." 
+    className={props.classes.input}
+    onChange={props.handleSearch}
+  />
 )
 export default injectSheet(styles)(Search);

@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 import { category } from './category/reducer'
+import { filters } from './filters/reducer';
 
 const reducers = combineReducers({
-  category
+  filters,
+  category,
 })
 
 export const store = createStore(

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NavBarLayout from '../layouts/NavBar-Layout';
 import NavbarCategories from '../components/Navbar-Categories';
+import { connect } from 'react-redux';
 
 class NavBarContainer extends Component {
 
@@ -13,4 +14,10 @@ class NavBarContainer extends Component {
   }
 }
 
-export default NavBarContainer;
+const mapStateToProps = (state, props) => {
+  return {
+    categories:state.filters.categories
+  }
+}
+
+export default connect(mapStateToProps)(NavBarContainer);
