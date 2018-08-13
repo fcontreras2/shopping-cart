@@ -5,12 +5,21 @@ import CardDescription from '../components/Card-Description';
 import CardButton from '../components/Card-Button';
 import { connect } from 'react-redux';
 class Card extends Component {
+  handleClickButton = event => {
+    this.props.dispatch({
+      type: 'ADD_REMOVE_CART',
+      payload: {
+        product: this.props.product
+      }
+    })
+  }
+
   render() {
     return(
       <CardLayout>
         <CardImage image={this.props.product.image} title={this.props.product.title}/>
         <CardDescription {...this.props.product}/>
-        <CardButton/>
+        <CardButton handleClickButton={this.handleClickButton}/>
       </CardLayout>
     )
   }

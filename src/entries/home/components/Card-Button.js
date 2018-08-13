@@ -9,6 +9,7 @@ const styles = {
     '& button': {
       fontFamily: fontRegular,
       background:'#fff',
+      color: grayPrimary,
       border: `2px solid ${grayPrimary}26`,
       padding: '5%',
       cursor:'pointer',
@@ -26,7 +27,7 @@ const styles = {
 
 const CardButton = props => (
   <div className={props.classes.button}>
-    <button className={props.classes.add}>
+    <button className={props.classes.add} onClick={props.handleClickButton}>
       <FontAwesomeIcon icon={'cart-plus'}/>
       &nbsp;Agregar 
     </button>
