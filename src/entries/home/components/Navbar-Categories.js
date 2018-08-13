@@ -41,6 +41,7 @@ const NavBarCategories = ({categories,classes}) => (
         categories.map((item) => (
           <li key={item.id}>
             <span>
+            <input type="checkbox" id="cbox1" value="first_checkbox"/>
               {item.name}
             </span>
           </li>
