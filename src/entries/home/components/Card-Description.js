@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { bluePrimary , fontBold} from '../../../styles/constants';
 
 const styles = {
-  description: {
+  description: {    
     textAlign: 'center',
     '& p,ul': {
       marginTop: 10,
@@ -19,9 +19,13 @@ const styles = {
     listStyle: 'none',
     padding: 0,
     '& li': {
-      display: 'inline-block'
+      opacity: 0.2,
+      display: 'inline-block',
+      fontSize: '0.8em',
+      padding: '1px'
     },
     '& .active': {
+      opacity: 0.8,
       color: '#f3f33a'
     }
   },
@@ -37,7 +41,7 @@ const CardDescription = props => (
     <ul className={props.classes.stars}>
       {
         [...Array(5)].map((i,key) =>
-        <li key={key} className={`active`}><FontAwesomeIcon  icon={'star'}/></li>
+        <li key={key} className={ key < props.valoration? `active` : ''}><FontAwesomeIcon  icon={'star'}/></li>
         )          
       }
     </ul>
