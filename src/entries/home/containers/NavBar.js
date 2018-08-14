@@ -4,7 +4,6 @@ import NavbarCategories from '../components/Navbar-Categories';
 import { connect } from 'react-redux';
 import NavBarLogo  from '../components/NavBar-Logo';
 import NavBarMyCart from '../components/NavBar-MyCart';
-import { STATUS_CODES } from 'http';
 
 class NavBarContainer extends Component {
 
@@ -22,7 +21,7 @@ class NavBarContainer extends Component {
 const mapStateToProps = (state, props) => {
   return {
     categories:state.filters.categories,
-    products: state.cart.products.length
+    products: state.cart.count
   }
 }
 

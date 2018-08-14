@@ -1,11 +1,12 @@
 import { initialState } from './model';
 import { normalize } from 'normalizr';
 import { schemaCategory } from './schema';
+import { ADD_DATA } from './model';
 
-export const category = (state = initialState,action) => {
+export const products = (state = initialState,action) => {
   let normalizedData = null;
   switch(action.type) {
-    case 'ADD_DATA':
+    case ADD_DATA:
       normalizedData = normalize({categories:action.payload.data}, schemaCategory);
       
       return {

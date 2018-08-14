@@ -1,13 +1,17 @@
-import { initialState } from './model';
+import { initialState, ADD_PRODUCT, REMOVE_PRODUCT } from './model';
 
 export const cart = (state = initialState,action) => {
   switch(action.type) {
-    case 'ADD_REMOVE_CART':
-      const index = state.products.findIndex(e => e.id == action.payload.product.id)
-      if (index >= 0)
-        state.products.splice(index,1)
-      else
-        state.products.push(action.payload.product)
+    case ADD_PRODUCT:
+    case REMOVE_PRODUCT:
+      let id = action.payload.product.id;
+      if (state.products[id]) {
+        delete state.products[id];
+        state.count--;
+      } else {
+        state.products[id] = action.payload.product
+        state.count++;
+      }
       return {
         ...state
       }

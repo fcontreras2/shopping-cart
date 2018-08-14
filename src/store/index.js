@@ -1,11 +1,11 @@
 import { createStore, combineReducers } from 'redux';
-import { category } from './category/reducer'
+import { products } from './products/reducer'
 import { filters } from './filters/reducer';
 import { cart } from './cart/reducer';
 
 const reducers = combineReducers({
+  products,
   filters,
-  category,
   cart
 })
 

@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { addProduct, removeProduct } from '../../../store/cart/actions'
+
 import CardLayout from '../layouts/Card-Layout';
 import CardImage from '../components/Card-Image';
 import CardDescription from '../components/Card-Description';
 import CardButton from '../components/Card-Button';
-import { connect } from 'react-redux';
+
+
 class Card extends Component {
-  handleClickButton = event => {
-    this.props.dispatch({
-      type: 'ADD_REMOVE_CART',
-      payload: {
-        product: this.props.product
-      }
-    })
+
+  handleClickButton = () => {
+    if (this.props.isAdded)  
+      this.props.removeProduct(this.props.product)
+    else
+      this.props.addProduct(this.props.product)
   }
 
   render() {
@@ -19,7 +22,10 @@ class Card extends Component {
       <CardLayout>
         <CardImage image={this.props.product.image} title={this.props.product.title}/>
         <CardDescription {...this.props.product}/>
-        <CardButton handleClickButton={this.handleClickButton}/>
+        <CardButton
+          isAdded={this.props.isAdded} 
+          handleClickButton={this.handleClickButton}
+        />
       </CardLayout>
     )
   }
@@ -27,8 +33,9 @@ class Card extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    product:state.category.products[props.product]
+    product : state.products.products[props.product],
+    isAdded : typeof state.cart.products[props.product] === 'object' ? true : false
   }
 }
 
-export default connect(mapStateToProps)(Card);
+export default connect(mapStateToProps, {addProduct, removeProduct})(Card);

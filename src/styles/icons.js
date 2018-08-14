@@ -2,12 +2,14 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
   faStar,
+  faShoppingCart,
   faCartPlus,
-  faShoppingCart
+  faCartArrowDown,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
-  faShoppingCart,
   faStar,
-  faCartPlus
+  faShoppingCart,
+  faCartPlus,
+  faCartArrowDown
 )

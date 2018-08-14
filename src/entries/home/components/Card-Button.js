@@ -1,6 +1,6 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-import {grayPrimary, bluePrimary, fontRegular} from '../../../styles/constants';
+import {grayPrimary, bluePrimary, fontRegular, redPrimary} from '../../../styles/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const styles = {
@@ -22,15 +22,31 @@ const styles = {
       color: '#fff',
       background: bluePrimary
     }
+  },
+  remove: {
+    color: redPrimary + ' !important',  
+    '&:hover': {
+      border: `2px solid ${redPrimary}` ,
+      color: '#fff !important',
+      background: redPrimary
+    }
   }
 } 
 
 const CardButton = props => (
   <div className={props.classes.button}>
-    <button className={props.classes.add} onClick={props.handleClickButton}>
-      <FontAwesomeIcon icon={'cart-plus'}/>
-      &nbsp;Agregar 
-    </button>
+    { !props.isAdded ? (
+      <button className={props.classes.add} onClick={props.handleClickButton}>
+        <FontAwesomeIcon icon={'cart-plus'}/>
+        &nbsp;Agregar 
+      </button>
+    ) : (
+      <button className={props.classes.remove} onClick={props.handleClickButton}>
+        <FontAwesomeIcon icon={'cart-arrow-down'}/>
+        &nbsp;Eliminar 
+      </button>
+    )}
+    
   </div>
 )
 

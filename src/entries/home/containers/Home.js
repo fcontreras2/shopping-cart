@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { addProducts } from '../../../store/products/actions';
+import { addCategories } from '../../../store/filters/actions';
 
 import NavBar from '../containers/NavBar';
 import HomeLayout from '../layouts/Home-Layout';
@@ -11,14 +13,8 @@ class HomeContainer extends Component {
     fetch('https://shopping-cart-data.herokuapp.com/categories/')
       .then(resp => resp.json())      
       .then(response => {
-        this.props.dispatch({
-          type: 'ADD_CATEGORIES',
-          payload: { data: response }
-        })
-        this.props.dispatch({
-          type: 'ADD_DATA',
-          payload: { data: response }
-        })
+        this.props.addCategories(response)
+        this.props.addProducts(response)
       })
   }
 
@@ -34,8 +30,8 @@ class HomeContainer extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    categories:state.category.categories
+    categories:state.products.categories
   }
 }
 
-export default connect(mapStateToProps)(HomeContainer);
+export default connect(mapStateToProps,{addProducts,addCategories})(HomeContainer);
