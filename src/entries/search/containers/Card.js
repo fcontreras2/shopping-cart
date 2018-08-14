@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addProduct, removeProduct } from '../../../store/cart/actions'
 
 import CardLayout from '../layouts/Card-Layout';
 import CardImage from '../components/Card-Image';
 import CardDescription from '../components/Card-Description';
 import CardButton from '../components/Card-Button';
-
 
 class Card extends Component {
 
@@ -20,8 +20,10 @@ class Card extends Component {
   render() {
     return(
       <CardLayout>
-        <CardImage image={this.props.product.image} title={this.props.product.title}/>
-        <CardDescription {...this.props.product}/>
+        <Link to={`/product/${this.props.product.id}`}>
+          <CardImage image={this.props.product.image} title={this.props.product.title}/>
+          <CardDescription {...this.props.product}/>
+        </Link>
         <CardButton
           isAdded={this.props.isAdded} 
           handleClickButton={this.handleClickButton}

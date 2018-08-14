@@ -24,7 +24,7 @@ const styles = {
 }
 const NavBarMyCart = ({classes, products}) => 
   <div className={classes.boxCart}>
-    <Link to="/product" className={classes.link}>
+    <Link to="/cart" className={classes.link}>
       <FontAwesomeIcon icon="shopping-cart"/> 
       &nbsp;My cart ({products})
     </Link>

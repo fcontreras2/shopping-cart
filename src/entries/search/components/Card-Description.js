@@ -4,11 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { bluePrimary , fontBold} from '../../../styles/constants';
 
 const styles = {
-  description: {    
+  description: {
     textAlign: 'center',
     '& p,ul': {
       marginTop: 10,
       marginBottom: 10
+    },
+    '& a': {
+      textDecoration:'none',    
     }
   },
   title: {

@@ -1,4 +1,4 @@
-import { initialState } from './model';
+import { initialState, SEARCH_PRODUCTS } from './model';
 import { normalize } from 'normalizr';
 import { schemaCategory } from './schema';
 import { ADD_DATA } from './model';
@@ -15,7 +15,7 @@ export const products = (state = initialState,action) => {
           item => normalizedData.entities.categories[item]),
         products: normalizedData.entities.products
       }
-    case 'SEARCH_PRODUCTS': 
+    case SEARCH_PRODUCTS: 
       normalizedData = normalize({categories:action.payload.data}, schemaCategory);
       
       return {

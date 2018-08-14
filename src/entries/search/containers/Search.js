@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import ContentLayout from '../layouts/Content-Layout';
-import Search from '../components/Search';
+import SearchLayout from '../layouts/Search-Layout';
+import SearchInput from '../components/Search-Input';
 import Categories from '../components/Categories';
+
+import { searchProducts } from '../../../store/products/actions';
 import { connect } from 'react-redux';
 const withQuery = require('with-query').default;
 
-class ContentContainer extends Component {
+
+class SearchContainer extends Component {
   state = {
     isSearch: setTimeout(() => {}, 0)
   }
@@ -17,31 +20,31 @@ class ContentContainer extends Component {
       isSearch:setTimeout(() => this.processSearch(text), 2000)
     });
   }
-  
+
   processSearch = text => {
-    const query = text ? 
-      {query : text } : {}
+    const query = text ? {query : text } : {}
+    
     fetch(withQuery('http://localhost:4000/search',query))
       .then(resp => resp.json())
       .then(response => {
-        this.props.dispatch({
-          type: 'SEARCH_PRODUCTS',
-          payload: {
-            data: response,
-            search: text
-          }
-        })
+        this.props.searchProducts({response, text})
       })
   }
   
   render() {
     return(
-      <ContentLayout>
-        <Search handleSearch={this.handleSearch}/>
+      <SearchLayout>
+        <SearchInput handleSearch={this.handleSearch}/>
         <Categories categories={this.props.categories}/>
-      </ContentLayout>
+      </SearchLayout>
     )
   }
 }
 
-export default connect()(ContentContainer);
+const mapStateToProps = (state) => {
+  return {
+    categories:state.products.categories
+  }
+}
+
+export default connect(mapStateToProps,{searchProducts})(SearchContainer);

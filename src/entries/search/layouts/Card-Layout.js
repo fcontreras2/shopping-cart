@@ -11,7 +11,11 @@ const styles = {
     transition: `all 0.2s linear`,
     '&:hover': {
       boxShadow: `0px 0px 2px 2px ${grayPrimary}26`
-    } 
+    }, 
+    "& a": {
+      textDecoration: 'none',
+      color: grayPrimary
+    }
   }
 }
 

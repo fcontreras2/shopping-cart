@@ -5,11 +5,13 @@ import {
   faShoppingCart,
   faCartPlus,
   faCartArrowDown,
+  faSearch
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faStar,
   faShoppingCart,
   faCartPlus,
-  faCartArrowDown
+  faCartArrowDown,
+  faSearch
 )

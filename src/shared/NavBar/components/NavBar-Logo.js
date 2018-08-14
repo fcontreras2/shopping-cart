@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import injectSheet from 'react-jss';
 import {grayPrimary} from '../../../styles/constants'
+
 const styles = {
   boxLogo: {
     '& hr': {
@@ -15,7 +17,9 @@ const styles = {
 const NavBarLogo = ({classes}) => 
   <div className={classes.boxLogo}>
     
-    <img src="/images/logo.png" alt="Cart Photos Logo" className={classes.image}/>
+    <Link to="/">
+      <img src="/images/logo.png" alt="Cart Photos Logo" className={classes.image}/>
+    </Link>
     <hr/>
   </div>
 
