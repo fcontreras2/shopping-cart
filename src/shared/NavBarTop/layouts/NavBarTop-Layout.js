@@ -4,6 +4,7 @@ import { grayPrimary } from '../../../styles/constants'
 
 const styles = {
   filtersLayout: {
+    minHeight: '71px',
     width: '75%',
     position: 'fixed',
     display: 'block',
