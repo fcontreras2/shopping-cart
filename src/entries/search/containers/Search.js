@@ -5,12 +5,14 @@ import Categories from '../components/Categories';
 
 import { searchProducts } from '../../../store/products/actions';
 import { connect } from 'react-redux';
+import FiltersCategories from '../components/Filters-Categories';
+import NavBarTopLayout from '../../../shared/NavBarTop/layouts/NavBarTop-Layout';
 const withQuery = require('with-query').default;
-
 
 class SearchContainer extends Component {
   state = {
-    isSearch: setTimeout(() => {}, 0)
+    isSearch: setTimeout(() => {}, 0),
+    showFilters: false
   }
 
   handleSearch = event => {
@@ -21,6 +23,8 @@ class SearchContainer extends Component {
     });
   }
 
+  handleShowFilters = event => this.setState({showFilters: !this.state.showFilters})
+  
   processSearch = text => {
     const query = text ? {query : text } : {}
     
@@ -34,7 +38,14 @@ class SearchContainer extends Component {
   render() {
     return(
       <SearchLayout>
-        <SearchInput handleSearch={this.handleSearch}/>
+        <NavBarTopLayout
+          left={<SearchInput handleSearch={this.handleSearch}/>}
+          right={<FiltersCategories  
+            handleShowFilters={this.handleShowFilters}
+            showFilters={this.state.showFilters} 
+            categories={this.props.filters}/>}
+        >
+        </NavBarTopLayout>
         <Categories categories={this.props.categories}/>
       </SearchLayout>
     )
@@ -43,7 +54,8 @@ class SearchContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    categories:state.products.categories
+    categories:state.products.categories,
+    filters: state.filters.categories
   }
 }
 

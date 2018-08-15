@@ -6,17 +6,18 @@ import {grayPrimary} from '../../../styles/constants'
 const styles = {
   boxLogo: {
     '& hr': {
-      borderTop: grayPrimary+'63'
-    }
+      borderTop: '1px solid ' + grayPrimary+'63'
+    },
+    background: grayPrimary+'14'
   },
   image: {
+    marginLeft: '10px',
     width: '120px',
     marginTop: '10px'
   }
 }
 const NavBarLogo = ({classes}) => 
   <div className={classes.boxLogo}>
-    
     <Link to="/">
       <img src="/images/logo.png" alt="Cart Photos Logo" className={classes.image}/>
     </Link>

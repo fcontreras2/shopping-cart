@@ -1,24 +1,6 @@
 import React from 'react';
-import {fontRegular, bluePrimary, fontItalic, grayPrimary} from '../../../styles/constants';
-
+import { navBarTopInput } from '../../../styles/constants';
 import injectSheet from 'react-jss';
-
-const styles = {
-  input: {
-    maxWith: '100%',
-    width: '250px',
-    padding: '8px',
-    color:grayPrimary,
-    fontFamily: fontRegular,
-    '&:focus': {
-      outline: 'none',
-      border: `2px solid ${bluePrimary}` 
-    },
-    '&::-webkit-input-placeholder': {
-      fontFamily: fontItalic
-    }
-  }
-}
 
 const SearchInput = props => (
   <input 
@@ -26,6 +8,7 @@ const SearchInput = props => (
     placeholder="Busca un producto..." 
     className={props.classes.input}
     onChange={props.handleSearch}
+    autoFocus
   />
 )
-export default injectSheet(styles)(SearchInput);
+export default injectSheet(navBarTopInput)(SearchInput);

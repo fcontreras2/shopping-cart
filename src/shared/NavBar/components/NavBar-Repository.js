@@ -7,7 +7,7 @@ const styles = {
     position: 'absolute',
     width: '100%',
     display:'block',
-    background: grayPrimary+'14',
+    background: grayPrimary+'05',
     borderTop: `1px solid ${grayPrimary}69`,
     bottom: 0,
     padding: '10px',
@@ -29,11 +29,11 @@ const styles = {
 }
 
 const NavBarRepository = ({classes}) => (
-  <a href="https://github.com/fcontreras2/shopping-cart" target="_blank">
+  <a href="https://github.com/fcontreras2/shopping-cart" rel="noopener noreferrer" target="_blank">
     <div className={classes.navBarRepository}>
       <div className="row">
         <div className="col-3">
-          <img src="/images/logo-github.png"/>
+          <img src="/images/logo-github.png" alt="Github"/>
         </div>
         <div className="col-9" style={{padding:0}}>
          <p>Fcontreras2 / Shopping Cart</p>

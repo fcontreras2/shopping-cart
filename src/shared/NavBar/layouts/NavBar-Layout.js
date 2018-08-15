@@ -4,6 +4,7 @@ import { grayPrimary } from '../../../styles/constants';
 
 const styles = {
   navBar: {
+    padding: 0,
     height: '100vh',
     position: 'fixed',
     background:`${grayPrimary}05`,

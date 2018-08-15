@@ -3,7 +3,8 @@ import injectSheet from 'react-jss';
 
 const styles = {
   margin :{
-    marginTop: '2%'
+    padding: 0,
+    marginTop: '7%'
   }
 }
 

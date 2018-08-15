@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import NavBarLayout from '../layouts/NavBar-Layout';
-import NavbarCategories from '../components/Navbar-Categories';
 import { connect } from 'react-redux';
 import NavBarLogo  from '../components/NavBar-Logo';
-import NavBarMyCart from '../components/NavBar-MyCart';
+import NavBarSections from '../components/NavBar-Sections';
 import NavBarRepository from '../components/NavBar-Repository';
 
 class NavBarContainer extends Component {
@@ -12,8 +11,7 @@ class NavBarContainer extends Component {
     return(
       <NavBarLayout>
         <NavBarLogo/>
-        <NavBarMyCart products={this.props.products}/>
-        <NavbarCategories categories={this.props.categories}/>
+        <NavBarSections products={this.props.products}/>
         <NavBarRepository/>
       </NavBarLayout>
     )

@@ -7,6 +7,7 @@ import Card from '../containers/Card';
 
 const styles = {
   category: {
+    padding: '20px',
     '& h1' :{ 
       color: grayPrimary,
       fontFamily: fontBold,

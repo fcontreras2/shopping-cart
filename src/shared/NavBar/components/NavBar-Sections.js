@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom'
 const styles = {
   boxCart: {
     paddingTop: 10,
-    '& hr': {
-      borderTop: grayPrimary+'63'
-    },
+    borderBottom: grayPrimary,
     '& :hover' : {
       color: bluePrimary
+    },
+    '& a': {
+      padding: '10px'
     }
   },
   link: {
@@ -22,13 +23,16 @@ const styles = {
     transition: 'all 0.4s linear'
   }
 }
-const NavBarMyCart = ({classes, products}) => 
+const NavBarSections = ({classes, products}) => 
   <div className={classes.boxCart}>
+    <Link to="/" className={classes.link}>
+      <FontAwesomeIcon icon="search"/> 
+      &nbsp; Buscar productos
+    </Link>
     <Link to="/cart" className={classes.link}>
       <FontAwesomeIcon icon="shopping-cart"/> 
-      &nbsp;My cart ({products})
+      &nbsp; My cart ({products})
     </Link>
-    <hr/>
   </div>
 
-export default injectSheet(styles)(NavBarMyCart);
+export default injectSheet(styles)(NavBarSections);
