@@ -1,19 +1,13 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-
-const styles = {
-  margin :{
-    padding: 0,
-    marginTop: '7%'
-  }
-}
+import {content} from '../../../styles/constants';
 
 const SearchLayout = ({classes, children}) => (
   <div className="row">
-    <div className={`col-12 ${classes.margin}`} >
+    <div className={`col-12 ${classes.content}`} >
       {children}
     </div>
   </div>
 )
 
-export default injectSheet(styles)(SearchLayout);
+export default injectSheet(content)(SearchLayout);

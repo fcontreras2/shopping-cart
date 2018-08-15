@@ -4,7 +4,8 @@ const products = new schema.Entity('products', {},{
   idAttribute:'id',
   processStrategy: (value, parent,key) => ({
     ...value,
-    category:parent.id
+    category:parent.id,
+    categoryName: parent.name
   })
 })
 

@@ -6,7 +6,7 @@ import { addProduct, removeProduct } from '../../../store/cart/actions'
 import CardLayout from '../layouts/Card-Layout';
 import CardImage from '../components/Card-Image';
 import CardDescription from '../components/Card-Description';
-import CardButton from '../components/Card-Button';
+import ProductCart from '../../../shared/ProductCart/ProductCart';
 
 class Card extends Component {
 
@@ -24,7 +24,7 @@ class Card extends Component {
           <CardImage image={this.props.product.image} title={this.props.product.title}/>
           <CardDescription {...this.props.product}/>
         </Link>
-        <CardButton
+        <ProductCart
           isAdded={this.props.isAdded} 
           handleClickButton={this.handleClickButton}
         />

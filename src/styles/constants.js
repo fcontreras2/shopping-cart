@@ -8,6 +8,14 @@ export const fontBold = "'Lato-Bold', sans-serif";
 export const fontItalic = "'Lato-Italic', sans-serif";
 
 // Estilos 
+
+export const content = {
+  content : {
+    padding: 0,
+    marginTop: '7%'
+  }
+}
+
 export const navBarTopButton = {
   float: 'right',
   border: `2px solid ${grayPrimary}69`,

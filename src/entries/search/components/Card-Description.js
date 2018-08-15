@@ -1,7 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { bluePrimary , fontBold} from '../../../styles/constants';
+import Stars from '../../../shared/Stars/Stars';
 
 const styles = {
   description: {
@@ -18,20 +18,6 @@ const styles = {
     height: '22px',
     overflow: 'hidden'
   },
-  stars: {
-    listStyle: 'none',
-    padding: 0,
-    '& li': {
-      opacity: 0.2,
-      display: 'inline-block',
-      fontSize: '0.8em',
-      padding: '1px'
-    },
-    '& .active': {
-      opacity: 0.8,
-      color: '#f3f33a'
-    }
-  },
   price: {
     color: bluePrimary,
     fontFamily: fontBold
@@ -41,13 +27,7 @@ const styles = {
 const CardDescription = props => (
   <div className={props.classes.description}>
     <p className={props.classes.title}> {props.name}</p>
-    <ul className={props.classes.stars}>
-      {
-        [...Array(5)].map((i,key) =>
-        <li key={key} className={ key < props.valoration? `active` : ''}><FontAwesomeIcon  icon={'star'}/></li>
-        )          
-      }
-    </ul>
+    <Stars valoration={props.valoration}></Stars>
     <p className={props.classes.price}>${props.price}</p>
   </div>
 )

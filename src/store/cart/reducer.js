@@ -1,4 +1,5 @@
 import { initialState, ADD_PRODUCT, REMOVE_PRODUCT } from './model';
+import { loadCart } from '../../shared/localStorage/localStorage';
 
 export const cart = (state = initialState,action) => {
   switch(action.type) {
@@ -16,6 +17,10 @@ export const cart = (state = initialState,action) => {
         ...state
       }
     default:
+      // Verificar si ya existe datos guardados previamente
+      let storageCart = loadCart()
+      if (storageCart !== state)
+        return storageCart;
       return state; 
   }
 }
