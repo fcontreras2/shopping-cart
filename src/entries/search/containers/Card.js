@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addProduct, removeProduct } from '../../../store/cart/actions'
+import * as Actions from '../../../store/cart/actions'
 
 import CardLayout from '../layouts/Card-Layout';
 import CardImage from '../components/Card-Image';
@@ -17,16 +17,28 @@ class Card extends Component {
       this.props.addProduct(this.props.product)
   }
 
+  handleAddCount = () => {
+    this.props.addProductCount(this.props.product.id)
+  }
+
+  handleSubstractCount = () => {
+    this.props.subtractProductCount(this.props.product.id)
+  }
+
   render() {
     return(
-      <CardLayout>
+      <CardLayout isAdded={this.props.isAdded}>
         <Link to={`/product/${this.props.product.id}`}>
           <CardImage image={this.props.product.image} title={this.props.product.title}/>
           <CardDescription {...this.props.product}/>
         </Link>
         <ProductCart
+          maxCount={this.props.product.stock}
+          count={this.props.count}
           isAdded={this.props.isAdded} 
           handleClickButton={this.handleClickButton}
+          handleAddCount={this.handleAddCount}
+          handleSubstractCount={this.handleSubstractCount}
         />
       </CardLayout>
     )
@@ -34,10 +46,12 @@ class Card extends Component {
 }
 
 const mapStateToProps = (state, props) => {
+  const isAdded = typeof state.cart.products[props.product] === 'object';
   return {
+    count: isAdded ? state.cart.products[props.product].count: null,
     product : state.products.products[props.product],
-    isAdded : typeof state.cart.products[props.product] === 'object' ? true : false
+    isAdded: isAdded
   }
 }
 
-export default connect(mapStateToProps, {addProduct, removeProduct})(Card);
+export default connect(mapStateToProps, Actions )(Card);

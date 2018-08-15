@@ -1,8 +1,10 @@
+import { initialState } from "../../store/cart/model";
+
 export const loadCart = () => {
   try { 
     const serializedState = localStorage.getItem('cart');
     if (serializedState === null)
-      return undefined
+      return initialState
     return JSON.parse(serializedState);
   } catch (err) {
     return undefined;

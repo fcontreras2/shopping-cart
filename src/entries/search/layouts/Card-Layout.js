@@ -1,6 +1,6 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-import { grayPrimary } from '../../../styles/constants';
+import { grayPrimary, bluePrimary } from '../../../styles/constants';
 
 const styles = {
   card: {
@@ -16,12 +16,15 @@ const styles = {
       textDecoration: 'none',
       color: grayPrimary
     }
+  },
+  active: {
+    background: `${bluePrimary}24`
   }
 }
 
-const CardLayout = ({classes, children}) => (
+const CardLayout = ({classes, isAdded, children}) => (
   <div className="col-3">
-    <div className={`${classes.card}`}>
+    <div className={`${classes.card} ${isAdded ? classes.active:''}` }>
       {children}
     </div>
   </div>

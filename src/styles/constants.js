@@ -9,6 +9,16 @@ export const fontItalic = "'Lato-Italic', sans-serif";
 
 // Estilos 
 
+export const horizontalList = {
+  width:'100%',
+  listStyle: 'none',
+  padding: 0,
+  margin:0,
+  '& li': {
+    float: 'left'
+  }
+}
+
 export const content = {
   content : {
     padding: 0,
