@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { addProduct, removeProduct } from '../../../store/cart/actions'
+import * as Actions from '../../../store/cart/actions'
 import ProductLayout from '../layouts/Product-Layout';
 import ProductImage from '../components/Product-Image';
 import ProductDescription from '../components/Product-Description';
@@ -17,6 +17,13 @@ class Product extends Component {
       this.props.addProduct(this.props.product)
   }
 
+  handleAddCount = () => {
+    this.props.addProductCount(this.props.product.id)
+  }
+
+  handleSubstractCount = () => {
+    this.props.subtractProductCount(this.props.product.id)
+  }
 
   render() {
     if (this.props.product)
@@ -31,8 +38,13 @@ class Product extends Component {
               <div>
                 <ProductImage image={this.props.product.image}/>
                 <ProductCart
-                  isAdded={this.props.isAdded}  
-                  handleClickButton={this.handleClickButton}></ProductCart>
+                  maxCount={this.props.product.stock}
+                  count={this.props.count}
+                  isAdded={this.props.isAdded} 
+                  handleClickButton={this.handleClickButton}
+                  handleAddCount={this.handleAddCount}
+                  handleSubstractCount={this.handleSubstractCount}
+                  ></ProductCart>
               </div>
             }
             right={
@@ -46,11 +58,14 @@ class Product extends Component {
   }
 } 
 
-const mapStateToProps = (state, props) => (
-  {
-    product: state.products.products[props.match.params.id],
-    isAdded : typeof state.cart.products[props.match.params.id] === 'object' ? true : false
-  }
-)
+const mapStateToProps = (state, props) => { 
+  const isAdded = typeof state.cart.products[props.match.params.id] === 'object';
 
-export default connect(mapStateToProps,{addProduct, removeProduct})(Product);
+  return {
+    isAdded,
+    count: isAdded ? state.cart.products[props.match.params.id].count: null,
+    product: state.products.products[props.match.params.id],
+  }
+}
+
+export default connect(mapStateToProps,Actions)(Product);

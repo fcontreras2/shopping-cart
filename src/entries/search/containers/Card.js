@@ -50,7 +50,7 @@ const mapStateToProps = (state, props) => {
   return {
     count: isAdded ? state.cart.products[props.product].count: null,
     product : state.products.products[props.product],
-    isAdded: isAdded
+    isAdded
   }
 }
 
