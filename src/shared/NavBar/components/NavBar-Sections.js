@@ -23,7 +23,7 @@ const styles = {
     transition: 'all 0.4s linear'
   }
 }
-const NavBarSections = ({classes, products}) => 
+const NavBarSections = ({classes, products, total}) => 
   <div className={classes.boxCart}>
     <Link to="/" className={classes.link}>
       <FontAwesomeIcon icon="search"/> 
@@ -31,7 +31,7 @@ const NavBarSections = ({classes, products}) =>
     </Link>
     <Link to="/cart" className={classes.link}>
       <FontAwesomeIcon icon="shopping-cart"/> 
-      &nbsp; My cart ({products})
+      &nbsp; Mis productos ({products}){ total > 0 ? ' - $'+Number(total).toFixed(2):''}
     </Link>
   </div>
 

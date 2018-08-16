@@ -11,7 +11,7 @@ class NavBarContainer extends Component {
     return(
       <NavBarLayout>
         <NavBarLogo/>
-        <NavBarSections products={this.props.products}/>
+        <NavBarSections total={this.props.total} products={this.props.products}/>
         <NavBarRepository/>
       </NavBarLayout>
     )
@@ -21,7 +21,8 @@ class NavBarContainer extends Component {
 const mapStateToProps = (state, props) => {
   return {
     categories:state.filters.categories,
-    products: state.cart.count
+    products: state.cart.count,
+    total: state.cart.total
   }
 }
 

@@ -23,7 +23,7 @@ const styles = {
 }
 
 const CardLayout = ({classes, isAdded, children}) => (
-  <div className="col-3">
+  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-3 ">
     <div className={`${classes.card} ${isAdded ? classes.active:''}` }>
       {children}
     </div>

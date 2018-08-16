@@ -6,7 +6,7 @@ import * as Actions from '../../../store/cart/actions'
 import CardLayout from '../layouts/Card-Layout';
 import CardImage from '../components/Card-Image';
 import CardDescription from '../components/Card-Description';
-import ProductCart from '../../../shared/ProductCart/ProductCart';
+import ProductCart from '../../ProductCart/ProductCart';
 
 class Card extends Component {
 

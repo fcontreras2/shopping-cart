@@ -35,9 +35,13 @@ class Product extends Component {
           </NavBarTopLayout>
           <ProductLayout
             left={
+              <ProductImage image={this.props.product.image}/>
+            }
+            right={
               <div>
-                <ProductImage image={this.props.product.image}/>
+                <ProductDescription {...this.props.product}/>
                 <ProductCart
+                  align="left"
                   maxCount={this.props.product.stock}
                   count={this.props.count}
                   isAdded={this.props.isAdded} 
@@ -46,9 +50,6 @@ class Product extends Component {
                   handleSubstractCount={this.handleSubstractCount}
                   ></ProductCart>
               </div>
-            }
-            right={
-              <ProductDescription {...this.props.product}/>
             }>
           </ProductLayout>
         </div>

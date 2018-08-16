@@ -3,7 +3,7 @@ import { fontBold, fontItalic, grayPrimary } from '../../../styles/constants';
 
 import injectSheet from 'react-jss';
 import CategoryLayout from '../layouts/Category-Layout';
-import Card from '../containers/Card';
+import Card from '../../../shared/Card/containers/Card';
 
 const styles = {
   category: {

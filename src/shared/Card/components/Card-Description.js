@@ -1,7 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import { bluePrimary , fontBold} from '../../../styles/constants';
-import Stars from '../../../shared/Stars/Stars';
+import Stars from '../../Stars/Stars';
 
 const styles = {
   description: {

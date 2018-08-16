@@ -40,18 +40,26 @@ const styles = {
       float: 'left',
       display: 'block'
     }
+  },
+  small: {
+    '& button': {
+      padding: '3%'
+    }
   }
 } 
 
 const ProductCart = props => (
-  <div className={props.classes.button}>
+  <div className={props.classes.button} 
+    style={{textAlign:props.align}}>
     { !props.isAdded ? (
+      <div className={`${props.align === 'left'? props.classes.small:''}`}>
       <button className={props.classes.add} onClick={props.handleClickButton}>
         <FontAwesomeIcon icon={'cart-plus'}/>
         &nbsp;Agregar 
       </button>
+      </div>
     ) : (
-      <div className={props.classes.options}>
+      <div className={`${props.classes.options} ${props.align === 'left'? props.classes.small:''}`}>
         <button disabled={props.count === 1} onClick={props.handleSubstractCount}>-</button>
         <button >{props.count}</button>
         <button disabled={props.maxCount === props.count} onClick={props.handleAddCount}>+</button>
