@@ -28,7 +28,7 @@ class App extends Component {
           <div className="offset-md-3 col-xs-12 col-md-9">
               <Route exact path="/" component={Search} />
               <Route path="/product/:id" component={Product}/>
-              <Route path="/cart" component={Cart}/>
+              <Route exact path="/cart" component={Cart}/>
           </div>
         </div>
       </Router>

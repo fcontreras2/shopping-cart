@@ -26,6 +26,10 @@ class Card extends Component {
   }
 
   render() {
+    
+    if (this.props.product === undefined)
+      return null
+
     return(
       <CardLayout isAdded={this.props.isAdded}>
         <Link to={`/product/${this.props.product.id}`}>
@@ -47,6 +51,7 @@ class Card extends Component {
 
 const mapStateToProps = (state, props) => {
   const isAdded = typeof state.cart.products[props.product] === 'object';
+  
   return {
     count: isAdded ? state.cart.products[props.product].count: null,
     product : state.products.products[props.product],
