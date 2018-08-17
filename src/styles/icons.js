@@ -8,7 +8,8 @@ import {
   faSearch,
   faFilter,
   faArrowLeft,
-  faBars
+  faBars,
+  faSpinner
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -19,5 +20,6 @@ library.add(
   faSearch,
   faFilter,
   faArrowLeft,
-  faBars
+  faBars,
+  faSpinner
 )

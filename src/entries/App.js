@@ -3,7 +3,6 @@ import NavBar from '../shared/NavBar/containers/NavBar';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addProducts } from '../store/products/actions';
-import { addCategories } from '../store/filters/actions';
 
 import Search from './search/containers/Search';
 import Product from './product/containers/Product';
@@ -12,12 +11,8 @@ import Cart from './cart/containers/Cart';
 class App extends Component {
 
   componentWillMount = () => {
-    fetch('https://shopping-cart-data.herokuapp.com/categories/')
-      .then(resp => resp.json())      
-      .then(response => {
-        this.props.addCategories(response)
-        this.props.addProducts(response)
-      })
+    // Consulta data productos y categorias
+    this.props.addProducts();
   }
   
   render() {
@@ -36,4 +31,4 @@ class App extends Component {
   }
 }
 
-export default connect(null,{addProducts,addCategories})(App);
+export default connect(null,{addProducts})(App);

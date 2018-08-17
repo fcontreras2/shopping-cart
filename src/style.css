@@ -1,15 +1,18 @@
 @font-face {
   font-family: Lato;
+  font-display: optional;
   src: url(/fonts/Lato-Regular.ttf);
 }
 
 @font-face {
   font-family: Lato-Italic;
+  font-display: optional;
   src: url(/fonts/Lato-Italic.ttf);
 }
 
 @font-face {
   font-family: Lato-Bold;
+  font-display: optional;
   src: url(/fonts/Lato-Bold.ttf);
 }
 

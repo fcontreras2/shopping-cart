@@ -1,16 +1,39 @@
-import {ADD_DATA, SEARCH_PRODUCTS} from './model'
+import { ADD_DATA, SEARCH_PRODUCTS, SEARCHING } from './model'
+import { querySearch, queryData } from './queries';
+import { addCategories } from '../filters/actions';
+
+export const searching = () => {
+  return {
+    type: SEARCHING
+  }
+}
 
 // Obtener todos los productos
-export const addProducts = (data) => {
-  return{
-    type: ADD_DATA,
-    payload: { data }
+export const addProducts = (data) => (
+  (dispatch) => {
+    dispatch(searching())
+    setTimeout(() => {
+      queryData().then(response=> {
+        dispatch({
+          type: ADD_DATA,
+          payload: { data:response }
+        })
+        dispatch(addCategories(response))
+      })
+    },500)
   }
-}
+)
 
-export const searchProducts = ({response, search}) => {
-  return {
-    type: SEARCH_PRODUCTS,
-    payload: { data: response, search }
+export const searchProducts = (query) => (
+  (dispatch) => {
+    dispatch(searching())
+    setTimeout(() => {
+      querySearch(query).then(response => {
+        dispatch({
+          type: SEARCH_PRODUCTS,
+          payload: { data: response, query }
+        })
+      })
+    }, 500);
   }
-}
+)

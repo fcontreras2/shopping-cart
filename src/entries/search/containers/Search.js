@@ -1,52 +1,82 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import SearchLayout from '../layouts/Search-Layout';
 import SearchInput from '../components/Search-Input';
 import Categories from '../components/Categories';
 
 import { searchProducts } from '../../../store/products/actions';
-import { connect } from 'react-redux';
+import { updateSearch } from '../../../store/filters/actions';
 import FiltersCategories from '../components/Filters-Categories';
 import NavBarTopLayout from '../../../shared/NavBarTop/layouts/NavBarTop-Layout';
-const withQuery = require('with-query').default;
+import Loading from '../components/Loading';
 
 class SearchContainer extends Component {
   state = {
-    isSearch: setTimeout(() => {}, 0),
     showFilters: false
   }
 
+  filters = React.createRef()
+
   handleSearch = event => {
-    clearTimeout(this.state.isSearch);
     const text = event.target.value;
+    this.setState({
+      search: text
+    })
+    clearTimeout(this.state.isSearch);
     this.setState({
       isSearch:setTimeout(() => this.processSearch(text), 2000)
     });
   }
 
-  handleShowFilters = event => this.setState({showFilters: !this.state.showFilters})
+  handleShowFilters = () => this.setState({showFilters: !this.state.showFilters})
   
+  componentWillMount() {
+    // Si se habia realizado un busqueda previa
+    if (this.props.search !== this.state.search)
+      this.setState({
+        search: this.props.search
+      })
+    document.addEventListener('mousedown',this.mouseCategories, false)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown',this.mouseCategories, false)
+  }
+
+  mouseCategories = event => {
+ 
+  }
+
   processSearch = text => {
     const query = text ? {query : text } : {}
-    
-    fetch(withQuery('http://localhost:4000/search',query))
-      .then(resp => resp.json())
-      .then(response => {
-        this.props.searchProducts({response, text})
-      })
+    this.props.updateSearch(query);
+    this.props.searchProducts(query);
   }
   
   render() {
     return(
       <SearchLayout>
         <NavBarTopLayout
-          left={<SearchInput handleSearch={this.handleSearch}/>}
-          right={<FiltersCategories  
+          left={
+            <SearchInput
+              search={this.state.search} 
+              handleSearch={this.handleSearch}/>
+          }
+          right={
+            <FiltersCategories 
+            ref={(ref) => this.filters = ref}
             handleShowFilters={this.handleShowFilters}
             showFilters={this.state.showFilters} 
-            categories={this.props.filters}/>}
+            categories={this.props.filters}/>
+          }
         >
         </NavBarTopLayout>
-        <Categories categories={this.props.categories}/>
+        { !this.props.isLoading ?
+        
+          <Categories categories={this.props.categories}/>
+          :
+          <Loading/>
+        }
       </SearchLayout>
     )
   }
@@ -55,8 +85,10 @@ class SearchContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     categories:state.products.categories,
-    filters: state.filters.categories
+    filters: state.filters.categories,
+    search: state.filters.search,
+    isLoading: state.products.isLoading
   }
 }
 
-export default connect(mapStateToProps,{searchProducts})(SearchContainer);
+export default connect(mapStateToProps,{updateSearch,searchProducts})(SearchContainer);
