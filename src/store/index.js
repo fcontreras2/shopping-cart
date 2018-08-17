@@ -11,15 +11,25 @@ const reducers = combineReducers({
   cart
 })
 
+const enhancers = 
+  compose(
+    process.env.NODE_ENV !== 'development' ? 
+    (
+      applyMiddleware(
+        thunk
+      ),
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+    :
+    applyMiddleware(
+      thunk
+    )
+  )
+
 export const store = createStore(
   reducers,
   {}, // Estado inicial del proyecto
-  compose(
-    applyMiddleware(
-      thunk
-    ),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
-  )
+  enhancers
 );
 
 store.subscribe(() => {
