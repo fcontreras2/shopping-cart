@@ -31,7 +31,11 @@ const styles = {
 const CardImage = props => (
   <div className={props.classes.cardImage}>
     <FontAwesomeIcon icon='search' className={props.classes.icon}/>
-    <LazyLoad height={200}>
+    <LazyLoad 
+      height={150}
+      placeholder={
+        <img src='/images/logo-lazy.jpg' alt={props.name}/>
+      }>
       <img 
         src={props.image} 
         alt={props.name} 
