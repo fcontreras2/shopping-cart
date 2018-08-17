@@ -12,6 +12,7 @@
     "npm": "^6.3.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-helmet": "^5.2.0",
     "react-jss": "^8.6.1",
     "react-lazyload": "^2.3.0",
     "react-redux": "^5.0.7",

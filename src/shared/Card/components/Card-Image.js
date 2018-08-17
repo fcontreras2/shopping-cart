@@ -34,7 +34,7 @@ const CardImage = props => (
     <LazyLoad 
       height={150}
       placeholder={
-        <img src='/images/logo-lazy.jpg' alt={props.name}/>
+        <img src='/images/logo-lazy.jpg' alt="Photos Cart"/>
       }>
       <img 
         src={props.image} 
