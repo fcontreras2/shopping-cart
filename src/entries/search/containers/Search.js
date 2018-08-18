@@ -9,6 +9,7 @@ import { updateSearch } from '../../../store/filters/actions';
 import FiltersCategories from '../components/Filters-Categories';
 import NavBarTopLayout from '../../../shared/NavBarTop/layouts/NavBarTop-Layout';
 import Loading from '../components/Loading';
+import NotFound from '../components/NotFound';
 
 class SearchContainer extends Component {
   state = {
@@ -72,10 +73,14 @@ class SearchContainer extends Component {
         >
         </NavBarTopLayout>
         { !this.props.isLoading ?
-        
-          <Categories categories={this.props.categories}/>
-          :
-          <Loading/>
+          
+          (
+            this.props.categories.length > 0 ?
+            <Categories categories={this.props.categories}/>
+            :
+            <NotFound/>
+          )
+          : <Loading/>
         }
       </SearchLayout>
     )

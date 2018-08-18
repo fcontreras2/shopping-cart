@@ -56,3 +56,24 @@ export const navBarTopInput = {
     }
   }
 }
+
+export const navBarTopText =  {
+  text: {
+    margin: 0,
+    fontFamily: fontBold,
+    color: bluePrimary
+  }
+}
+
+export const verticalContent = {
+  verticalContent: {
+    fontFamily: fontBold,
+    lineHeight:'88vh',
+    fontSize: '1.2em',
+    textAlign: 'center',
+    color: bluePrimary + ' !important',
+    '*': {
+      verticalAlign:'middle'
+    }
+  }
+}

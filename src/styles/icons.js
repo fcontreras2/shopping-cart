@@ -9,7 +9,8 @@ import {
   faFilter,
   faArrowLeft,
   faBars,
-  faSpinner
+  faSpinner,
+  faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -21,5 +22,6 @@ library.add(
   faFilter,
   faArrowLeft,
   faBars,
-  faSpinner
+  faSpinner,
+  faExclamationTriangle
 )

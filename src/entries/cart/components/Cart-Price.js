@@ -1,7 +1,9 @@
 import React from 'react';
+import { navBarTopText } from '../../../styles/constants';
+import injectSheet from 'react-jss';
 
 const CartPrice = props => (
-  <p>${props.total}</p>
+  <p className={props.classes.text} >Total: ${props.total}</p>
 )
 
-export default CartPrice;
+export default injectSheet(navBarTopText)(CartPrice);

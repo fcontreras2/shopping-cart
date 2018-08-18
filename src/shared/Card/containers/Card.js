@@ -32,7 +32,7 @@ class Card extends Component {
 
     return(
       <CardLayout isAdded={this.props.isAdded}>
-        <Link to={`/product/${this.props.product.id}`}>
+       <Link to={`/product/${this.props.product.id}`}>
           <CardImage image={this.props.product.image} title={this.props.product.title}/>
           <CardDescription {...this.props.product}/>
         </Link>
@@ -50,13 +50,17 @@ class Card extends Component {
 }
 
 const mapStateToProps = (state, props) => {
+  
+  const data = typeof props.state === 'undefined' ? 
+    state.products.products : state[props.state].products;
   const isAdded = typeof state.cart.products[props.product] === 'object';
   
+  console.log('ada',data[props.product])
   return {
     count: isAdded ? state.cart.products[props.product].count: null,
-    product : state.products.products[props.product],
+    product : data[props.product],
     isAdded
-  }
+  } 
 }
 
 export default connect(mapStateToProps, Actions )(Card);

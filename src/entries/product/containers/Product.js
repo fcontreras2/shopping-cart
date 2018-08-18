@@ -4,7 +4,7 @@ import * as Actions from '../../../store/cart/actions'
 import ProductLayout from '../layouts/Product-Layout';
 import ProductImage from '../components/Product-Image';
 import ProductDescription from '../components/Product-Description';
-import ProductGoBack from '../components/Product-Go-Back';
+import GoBack from '../../../shared/GoBack/GoBack';
 import NavBarTopLayout from '../../../shared/NavBarTop/layouts/NavBarTop-Layout';
 import ProductCart from '../../../shared/ProductCart/ProductCart';
 
@@ -30,7 +30,7 @@ class Product extends Component {
       return(
         <div className="row">
           <NavBarTopLayout
-            right={<ProductGoBack handleClickBack={this.props.history.goBack}/>}
+            right={<GoBack handleClickBack={this.props.history.goBack}/>}
           >
           </NavBarTopLayout>
           <ProductLayout
