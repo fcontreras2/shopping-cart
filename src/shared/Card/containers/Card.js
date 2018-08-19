@@ -55,7 +55,6 @@ const mapStateToProps = (state, props) => {
     state.products.products : state[props.state].products;
   const isAdded = typeof state.cart.products[props.product] === 'object';
   
-  console.log('ada',data[props.product])
   return {
     count: isAdded ? state.cart.products[props.product].count: null,
     product : data[props.product],

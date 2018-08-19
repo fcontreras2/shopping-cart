@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SearchLayout from '../layouts/Search-Layout';
 import SearchInput from '../components/Search-Input';
 import Categories from '../components/Categories';
+import { applyFilter } from '../../../store/filters/actions';
 
 import { searchProducts } from '../../../store/products/actions';
 import { updateSearch } from '../../../store/filters/actions';
@@ -10,6 +11,7 @@ import FiltersCategories from '../components/Filters-Categories';
 import NavBarTopLayout from '../../../shared/NavBarTop/layouts/NavBarTop-Layout';
 import Loading from '../components/Loading';
 import NotFound from '../components/NotFound';
+import Filters from '../components/Filters';
 
 class SearchContainer extends Component {
   state = {
@@ -29,7 +31,7 @@ class SearchContainer extends Component {
     });
   }
 
-  handleShowFilters = () => this.setState({showFilters: !this.state.showFilters})
+  handleShowFilters = () => this.setState({showFilters: true})
   
   componentWillMount() {
     // Si se habia realizado un busqueda previa
@@ -45,7 +47,13 @@ class SearchContainer extends Component {
   }
 
   mouseCategories = event => {
- 
+    if(this.state.showFilters && !this.filters.contains(event.target))
+      this.setState({showFilters: false})
+  }
+
+  handleApplyFilter = event =>  {
+    if (event.target.getAttribute('index'))
+      this.props.applyFilter(event.target.getAttribute('index'))
   }
 
   processSearch = text => {
@@ -65,7 +73,6 @@ class SearchContainer extends Component {
           }
           right={
             <FiltersCategories 
-            ref={(ref) => this.filters = ref}
             handleShowFilters={this.handleShowFilters}
             showFilters={this.state.showFilters} 
             categories={this.props.filters}/>
@@ -82,6 +89,15 @@ class SearchContainer extends Component {
           )
           : <Loading/>
         }
+      
+        {
+          this.state.showFilters &&
+          <div ref={ node => this.filters = node}>
+            <Filters
+              handleApplyFilter={this.handleApplyFilter} 
+              categories={this.props.filters}/>
+          </div>
+        }
       </SearchLayout>
     )
   }
@@ -96,4 +112,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,{updateSearch,searchProducts})(SearchContainer);
+export default connect(mapStateToProps,{updateSearch,searchProducts, applyFilter})(SearchContainer);

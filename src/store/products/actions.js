@@ -25,9 +25,11 @@ export const addProducts = (data) => (
 )
 
 export const searchProducts = (query) => (
-  (dispatch) => {
+  (dispatch, getState) => {
     dispatch(searching())
     setTimeout(() => {
+      if (getState().filters.query !== '')
+        query.filters = getState().filters.query
       querySearch(query).then(response => {
         dispatch({
           type: SEARCH_PRODUCTS,

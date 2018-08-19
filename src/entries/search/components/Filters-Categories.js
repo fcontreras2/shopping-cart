@@ -37,18 +37,6 @@ styles.navBarTopButton = {...styles.navBarTopButton,...hover}
 const FiltersCategories = ({classes,categories, showFilters,handleShowFilters}) => (
   <div className={classes.navBarTopButton}>
     <button onClick={handleShowFilters}><FontAwesomeIcon icon="filter"/></button>
-    {
-      showFilters && 
-      <ul>
-        {
-          categories.map((category,key) => (
-            <li key={key}>    
-              <input type="checkbox"/>{category.name}
-            </li>
-          ))
-        }
-      </ul>
-    }
   </div>
 )
 
