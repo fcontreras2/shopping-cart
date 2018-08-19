@@ -1,7 +1,5 @@
 const withQuery = require('with-query').default;
-const API_URL = process.env.REACT_APP_ENV === 'prod' ? 
-  "https://shopping-cart-data.herokuapp.com/" : 
-  "http://localhost:4000/"
+const API_URL = "https://shopping-cart-data.herokuapp.com/";
 
 export const queryData = () => (
   fetch(API_URL + 'categories/')
