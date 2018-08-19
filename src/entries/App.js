@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import NavBar from '../shared/NavBar/containers/NavBar';
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addProducts } from '../store/products/actions';
+import { openNav } from '../store/nav/actions';
 
 import Search from './search/containers/Search';
 import Product from './product/containers/Product';
@@ -13,7 +14,19 @@ class App extends Component {
 
   componentWillMount = () => {
     // Consulta data productos y categorias
+    console.log(this.props)
     this.props.addProducts();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.updateWindowDimensions)
+  }
+  
+  updateWindowDimensions = () => {
+    if (window.innerWidth > 767) {
+      this.props.openNav()
+    }
   }
   
   render() {
@@ -40,4 +53,4 @@ class App extends Component {
   }
 }
 
-export default connect(null,{addProducts})(App);
+export default connect(null,{addProducts, openNav})(App);

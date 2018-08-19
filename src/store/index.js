@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import { products } from './products/reducer'
 import { filters } from './filters/reducer';
 import { cart } from './cart/reducer';
+import { nav } from './nav/reducer';
 import { saveCart } from '../shared/localStorage/localStorage';
 
 const reducers = combineReducers({
   products,
   filters,
-  cart
+  cart,
+  nav
 })
 
 /* const enhancers = 

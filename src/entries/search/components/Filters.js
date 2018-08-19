@@ -1,7 +1,6 @@
 import React from 'react';
 import { grayPrimary, bluePrimary } from '../../../styles/constants';
 import injectSheet from 'react-jss';
-import CategoryLayout from '../layouts/Category-Layout';
 
 const styles = {
   list : {

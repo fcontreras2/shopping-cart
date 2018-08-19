@@ -1,6 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import { grayPrimary, graySecundary } from '../../../styles/constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const styles = {
   navBar: {
@@ -13,18 +14,31 @@ const styles = {
     top: 0,
     zIndex: 20000,
     borderRight: `1px  solid ${grayPrimary}63`,
-    transition: 'all 1s linear',
     '@media (max-width: 767px)': {
       backgroundColor:`${graySecundary}`,
       marginTop: '70px',
-      right: '100%',
-      transition: 'none'
+      right: '0%',
+      transition: 'all 0s linear'
     },
+  },
+  close: {
+    display: 'none',
+    position: 'absolute',
+    top: '2%',
+    fontSize:'16px',
+    right: '10px',
+    '@media (max-width: 767px)': {
+      display: 'block'
+    }
   }
 }
 
-const NavBarLayout = ({classes, children}) => (
-  <div className={`col-xs-8 col-md-3 ${classes.navBar}`}>
+const NavBarLayout = ({classes, children, handleCloseNav}) => ( 
+  <div className={`col-md-3 ${classes.navBar}`}>
+    <FontAwesomeIcon 
+      icon="times" 
+      onClick={handleCloseNav}
+      className={classes.close}/>
     {children}
   </div>
 )

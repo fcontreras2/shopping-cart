@@ -5,8 +5,8 @@ import ProductLayout from '../layouts/Product-Layout';
 import ProductImage from '../components/Product-Image';
 import ProductDescription from '../components/Product-Description';
 import GoBack from '../../../shared/GoBack/GoBack';
-import NavBarTopLayout from '../../../shared/NavBarTop/layouts/NavBarTop-Layout';
 import ProductCart from '../../../shared/ProductCart/ProductCart';
+import NavBarTop from '../../../shared/NavBarTop/containers/NavBarTop';
 
 class Product extends Component {
  
@@ -29,10 +29,10 @@ class Product extends Component {
     if (this.props.product)
       return(
         <div className="row">
-          <NavBarTopLayout
+          <NavBarTop
             right={<GoBack handleClickBack={this.props.history.goBack}/>}
           >
-          </NavBarTopLayout>
+          </NavBarTop>
           <ProductLayout
             left={
               <ProductImage image={this.props.product.image}/>

@@ -37,10 +37,12 @@ const styles = {
   }
 }
 
-const NavBarTopLayout = ({classes,left, right}) => (
+const NavBarTopLayout = ({classes,left, right, handleOpenNav}) => (
   <div className={classes.filtersLayout}>
     <div className={classes.left}>
-      <FontAwesomeIcon icon="bars" className={classes.menu}></FontAwesomeIcon>
+      <FontAwesomeIcon
+        onClick={handleOpenNav} 
+        icon="bars" className={classes.menu}/>
       {left}
     </div>
     <div className={classes.right}>
