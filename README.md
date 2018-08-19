@@ -86,8 +86,9 @@ A continuación se muestras los dependencias utilizadas:
  - [react-jss](https://github.com/cssinjs/react-jss): Css en JavaScript.
  - [redux-thunk](https://github.com/reduxjs/redux-thunk): Permite realizar dispatch de manera asíncrona.
  - [react-lazyload](https://github.com/jasonslyvia/react-lazyload): Carga lazyload de las imágenes.
- - [react-helmet](https://github.com/nfl/react-helmet): Permite agregar meta description 
- Otros:
+ - [react-helmet](https://github.com/nfl/react-helmet): Permite agregar meta description.
+ 
+Otros:
  - [normalizr](https://github.com/paularmstrong/normalizr): Normalizacion de datos.
  - [bootstrap](https://getbootstrap.com/): Utilizando para el manejo de grid.
  - [font-awesome](https://fontawesome.com/): Iconos del sistema.
