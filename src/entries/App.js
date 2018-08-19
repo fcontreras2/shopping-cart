@@ -13,8 +13,6 @@ import Cart from './cart/containers/Cart';
 class App extends Component {
 
   componentWillMount = () => {
-    // Consulta data productos y categorias
-    console.log(this.props)
     this.props.addProducts();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
