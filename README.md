@@ -18,12 +18,12 @@ _Nota: Este servidor es de prueba y la primera carga tardara un poco._
 
 El proyecto implementa la funcionalidades básicas de un carro de compra. Con fines realizar esta prueba se presenta como sistema ficticia *Photos Cart* donde su principal objetivo es la venta de fotografías e imágenes.
 El sistema permitirá lo siguiente:
- - Realizar busqueda de productos por nombres.
+ - Realizar búsqueda de productos por nombres.
  - Filtrado de productos por categorías.
  - Agregar o eliminar productos al carro de compra.
  - Agregar varios productos de un mismo tipo al carro de compras.
  - Visualizar los productos agregados al carro de compra.
- - Las busqueda se realiza por nombres del producto y el filtrado por la categoría del productos.
+ - Las búsqueda se realiza por nombres del producto y el filtrado por la categoría del productos.
 
 #### Observaciones
   - El enfoque del la prueba es mostrar la funcionalidad utilizando reactjs y redux, por esta razón se tiene un diseño básico.
