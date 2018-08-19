@@ -34,10 +34,10 @@ const hover = {
 let styles = {navBarTopButton}
 styles.navBarTopButton = {...styles.navBarTopButton,...hover}
 
-const FiltersCategories = ({classes,categories, showFilters,handleShowFilters}) => (
+const ButtonFilters = ({classes,categories, showFilters,handleShowFilters}) => (
   <div className={classes.navBarTopButton}>
     <button onClick={handleShowFilters}><FontAwesomeIcon icon="filter"/></button>
   </div>
 )
 
-export default injectSheet(styles)(FiltersCategories);
+export default injectSheet(styles)(ButtonFilters);

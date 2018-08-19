@@ -7,11 +7,11 @@ import { applyFilter } from '../../../store/filters/actions';
 
 import { searchProducts } from '../../../store/products/actions';
 import { updateSearch } from '../../../store/filters/actions';
-import FiltersCategories from '../components/Filters-Categories';
 import NavBarTopLayout from '../../../shared/NavBarTop/layouts/NavBarTop-Layout';
 import Loading from '../components/Loading';
 import NotFound from '../components/NotFound';
 import Filters from '../components/Filters';
+import ButtonFilters from '../components/Button-Filters';
 
 class SearchContainer extends Component {
   state = {
@@ -72,7 +72,7 @@ class SearchContainer extends Component {
               handleSearch={this.handleSearch}/>
           }
           right={
-            <FiltersCategories 
+            <ButtonFilters 
             handleShowFilters={this.handleShowFilters}
             showFilters={this.state.showFilters} 
             categories={this.props.filters}/>
